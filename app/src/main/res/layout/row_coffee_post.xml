@@ -43,5 +43,4 @@
         android:layout_alignTop="@+id/entry_post_section"
         android:src="@android:drawable/ic_media_play" />
 
-
 </RelativeLayout>

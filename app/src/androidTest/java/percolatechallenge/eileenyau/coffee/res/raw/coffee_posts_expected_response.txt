@@ -1,0 +1,50 @@
+[
+   {
+      "desc":"A coffee-based beverage or dessert. Usually refers to the act of topping a drink or dessert with esp...",
+      "image_url":"http://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Affogato.JPG/800px-Affogato.JPG",
+      "id":"affogato",
+      "name":"Affogato"
+   },
+   {
+      "desc":"A style of coffee prepared by adding hot water to espresso, giving a similar strength to but differe...",
+      "image_url":"",
+      "id":"americano",
+      "name":"Caffe Americano"
+   },
+   {
+      "desc":"A coffee-based drink prepared with espresso, hot milk, and steamed milk foam. A cappuccino differs f...",
+      "image_url":"http://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Classic_Cappuccino.jpg/800px-Classic_Cappuccino.jpg",
+      "id":"cappuccino",
+      "name":"Cappuccino"
+   },
+   {
+      "desc":"Refers to the process of steeping coffee grounds in room temperature or cold water for an extended p...",
+      "image_url":"",
+      "id":"coldbrew",
+      "name":"Cold Brew"
+   },
+   {
+      "desc":"A coffee beverage made with decaffeinated beans.",
+      "image_url":"",
+      "id":"decaf",
+      "name":"Decaf"
+   },
+   {
+      "desc":"Espresso is a concentrated beverage brewed by forcing a small amount of nearly boiling water under p...",
+      "image_url":"http://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Crema_espresso_Akha_Ama.jpg/575px-Crema_espresso_Akha_Ama.jpg",
+      "id":"espresso",
+      "name":"Espresso"
+   },
+   {
+      "desc":"Similar to the Portuguese Galao, a latte is a portion of espresso and steamed milk, generally in a 1...",
+      "image_url":"http://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Latte.jpg/800px-Latte.jpg",
+      "id":"latte",
+      "name":"Caffe Latte"
+   },
+   {
+      "desc":"A variant of a caffe latte. Like a latte, it is typically one third espresso and two thirds steamed ...",
+      "image_url":"http://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Mocha_Latte_Costa_Rica.JPG/220px-Mocha_Latte_Costa_Rica.JPG",
+      "id":"mocha",
+      "name":"Cafe Mocha"
+   }
+]
