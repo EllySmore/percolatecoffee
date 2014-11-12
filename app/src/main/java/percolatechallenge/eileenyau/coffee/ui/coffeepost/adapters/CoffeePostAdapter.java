@@ -1,8 +1,11 @@
 package percolatechallenge.eileenyau.coffee.ui.coffeepost.adapters;
 
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+
+import percolatechallenge.eileenyau.coffee.ui.coffeepost.widgets.CoffeePostRow;
 
 public class CoffeePostAdapter extends BaseAdapter {
     @Override
@@ -22,6 +25,8 @@ public class CoffeePostAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        return null;
+        CoffeePostRow rowView = (CoffeePostRow) convertView;
+        LayoutInflater inflater;
+        return rowView;
     }
 }
