@@ -1,19 +1,17 @@
 package percolatechallenge.eileenyau.coffee.api.requests;
 
-import com.octo.android.robospice.request.googlehttpclient.GoogleHttpClientSpiceRequest;
+import com.octo.android.robospice.request.okhttp.OkHttpSpiceRequest;
 
-public class CoffeePostsRequest extends GoogleHttpClientSpiceRequest {
-    public CoffeePostsRequest(Class clazz) {
+import percolatechallenge.eileenyau.coffee.api.models.CoffeePosts;
+
+public class CoffeePostsRequest extends OkHttpSpiceRequest<CoffeePosts> {
+
+    public CoffeePostsRequest(Class<CoffeePosts> clazz) {
         super(clazz);
     }
 
     @Override
-    public Object loadDataFromNetwork() throws Exception {
+    public CoffeePosts loadDataFromNetwork() throws Exception {
         return null;
-    }
-
-    @Override
-    public int compareTo(Object another) {
-        return 0;
     }
 }

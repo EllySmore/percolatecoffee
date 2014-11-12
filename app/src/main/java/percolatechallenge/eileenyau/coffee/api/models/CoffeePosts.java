@@ -1,85 +1,122 @@
 package percolatechallenge.eileenyau.coffee.api.models;
 
-import com.google.api.client.util.Key;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "desc",
+        "image_url",
+        "id",
+        "name"
+})
 
 public class CoffeePosts {
-
-    @Key
+    @JsonProperty("desc")
     private String desc;
-
-    @Key
-    private String image_url;
-
-    @Key
+    @JsonProperty("image_url")
+    private String imageUrl;
+    @JsonProperty("id")
     private String id;
-
-    @Key
+    @JsonProperty("name")
     private String name;
+    @JsonIgnore
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
+    /**
+     *
+     * @return
+     * The desc
+     */
+    @JsonProperty("desc")
     public String getDesc() {
         return desc;
     }
 
+    /**
+     *
+     * @param desc
+     * The desc
+     */
+    @JsonProperty("desc")
     public void setDesc(String desc) {
         this.desc = desc;
     }
 
+    /**
+     *
+     * @return
+     * The imageUrl
+     */
+    @JsonProperty("image_url")
     public String getImageUrl() {
-        return image_url;
+        return imageUrl;
     }
 
-    public void setImageUrl(String image_url) {
-        this.image_url = image_url;
+    /**
+     *
+     * @param imageUrl
+     * The image_url
+     */
+    @JsonProperty("image_url")
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
+    /**
+     *
+     * @return
+     * The id
+     */
+    @JsonProperty("id")
     public String getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     * The id
+     */
+    @JsonProperty("id")
     public void setId(String id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     * The name
+     */
+    @JsonProperty("name")
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name
+     * The name
+     */
+    @JsonProperty("name")
     public void setName(String name) {
         this.name = name;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        CoffeePosts that = (CoffeePosts) o;
-
-        if (desc != null ? !desc.equals(that.desc) : that.desc != null) return false;
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (image_url != null ? !image_url.equals(that.image_url) : that.image_url != null)
-            return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-
-        return true;
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
     }
 
-    @Override
-    public int hashCode() {
-        int result = desc != null ? desc.hashCode() : 0;
-        result = 31 * result + (image_url != null ? image_url.hashCode() : 0);
-        result = 31 * result + (id != null ? id.hashCode() : 0);
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        return "CoffeePosts{" +
-                "desc='" + desc + '\'' +
-                ", image_url='" + image_url + '\'' +
-                ", id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                '}';
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
     }
 }
