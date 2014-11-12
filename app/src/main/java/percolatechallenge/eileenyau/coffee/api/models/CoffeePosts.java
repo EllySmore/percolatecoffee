@@ -7,6 +7,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,9 +33,7 @@ public class CoffeePosts {
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
-     *
-     * @return
-     * The desc
+     * @return The desc
      */
     @JsonProperty("desc")
     public String getDesc() {
@@ -41,9 +41,7 @@ public class CoffeePosts {
     }
 
     /**
-     *
-     * @param desc
-     * The desc
+     * @param desc The desc
      */
     @JsonProperty("desc")
     public void setDesc(String desc) {
@@ -51,9 +49,7 @@ public class CoffeePosts {
     }
 
     /**
-     *
-     * @return
-     * The imageUrl
+     * @return The imageUrl
      */
     @JsonProperty("image_url")
     public String getImageUrl() {
@@ -61,9 +57,7 @@ public class CoffeePosts {
     }
 
     /**
-     *
-     * @param imageUrl
-     * The image_url
+     * @param imageUrl The image_url
      */
     @JsonProperty("image_url")
     public void setImageUrl(String imageUrl) {
@@ -71,9 +65,7 @@ public class CoffeePosts {
     }
 
     /**
-     *
-     * @return
-     * The id
+     * @return The id
      */
     @JsonProperty("id")
     public String getId() {
@@ -81,9 +73,7 @@ public class CoffeePosts {
     }
 
     /**
-     *
-     * @param id
-     * The id
+     * @param id The id
      */
     @JsonProperty("id")
     public void setId(String id) {
@@ -91,9 +81,7 @@ public class CoffeePosts {
     }
 
     /**
-     *
-     * @return
-     * The name
+     * @return The name
      */
     @JsonProperty("name")
     public String getName() {
@@ -101,9 +89,7 @@ public class CoffeePosts {
     }
 
     /**
-     *
-     * @param name
-     * The name
+     * @param name The name
      */
     @JsonProperty("name")
     public void setName(String name) {
@@ -118,5 +104,10 @@ public class CoffeePosts {
     @JsonAnySetter
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
+    }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this);
     }
 }

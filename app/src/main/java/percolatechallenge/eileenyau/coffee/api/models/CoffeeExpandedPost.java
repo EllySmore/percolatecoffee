@@ -8,6 +8,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,9 +37,7 @@ public class CoffeeExpandedPost {
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
-     *
-     * @return
-     * The lastUpdatedAt
+     * @return The lastUpdatedAt
      */
     @JsonProperty("last_updated_at")
     public String getLastUpdatedAt() {
@@ -45,9 +45,7 @@ public class CoffeeExpandedPost {
     }
 
     /**
-     *
-     * @param lastUpdatedAt
-     * The last_updated_at
+     * @param lastUpdatedAt The last_updated_at
      */
     @JsonProperty("last_updated_at")
     public void setLastUpdatedAt(String lastUpdatedAt) {
@@ -55,9 +53,7 @@ public class CoffeeExpandedPost {
     }
 
     /**
-     *
-     * @return
-     * The desc
+     * @return The desc
      */
     @JsonProperty("desc")
     public String getDesc() {
@@ -65,9 +61,7 @@ public class CoffeeExpandedPost {
     }
 
     /**
-     *
-     * @param desc
-     * The desc
+     * @param desc The desc
      */
     @JsonProperty("desc")
     public void setDesc(String desc) {
@@ -75,9 +69,7 @@ public class CoffeeExpandedPost {
     }
 
     /**
-     *
-     * @return
-     * The imageUrl
+     * @return The imageUrl
      */
     @JsonProperty("image_url")
     public String getImageUrl() {
@@ -85,9 +77,7 @@ public class CoffeeExpandedPost {
     }
 
     /**
-     *
-     * @param imageUrl
-     * The image_url
+     * @param imageUrl The image_url
      */
     @JsonProperty("image_url")
     public void setImageUrl(String imageUrl) {
@@ -95,9 +85,7 @@ public class CoffeeExpandedPost {
     }
 
     /**
-     *
-     * @return
-     * The id
+     * @return The id
      */
     @JsonProperty("id")
     public String getId() {
@@ -105,9 +93,7 @@ public class CoffeeExpandedPost {
     }
 
     /**
-     *
-     * @param id
-     * The id
+     * @param id The id
      */
     @JsonProperty("id")
     public void setId(String id) {
@@ -115,9 +101,7 @@ public class CoffeeExpandedPost {
     }
 
     /**
-     *
-     * @return
-     * The name
+     * @return The name
      */
     @JsonProperty("name")
     public String getName() {
@@ -125,9 +109,7 @@ public class CoffeeExpandedPost {
     }
 
     /**
-     *
-     * @param name
-     * The name
+     * @param name The name
      */
     @JsonProperty("name")
     public void setName(String name) {
@@ -142,5 +124,10 @@ public class CoffeeExpandedPost {
     @JsonAnySetter
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
+    }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this);
     }
 }
