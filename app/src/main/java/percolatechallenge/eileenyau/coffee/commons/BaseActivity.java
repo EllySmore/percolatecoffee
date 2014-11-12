@@ -4,9 +4,14 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.octo.android.robospice.SpiceManager;
+import com.octo.android.robospice.okhttp.OkHttpSpiceService;
+
 public class BaseActivity extends Activity {
 
     private final String TAG = this.getClass().getSimpleName();
+
+    private SpiceManager spiceManager = new SpiceManager(OkHttpSpiceService.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +21,7 @@ public class BaseActivity extends Activity {
 
     @Override
     protected void onStart() {
+        spiceManager.start(this);
         super.onStart();
         Log.v(TAG, "----------> onStart");
     }
@@ -34,7 +40,13 @@ public class BaseActivity extends Activity {
 
     @Override
     protected void onStop() {
+        spiceManager.shouldStop();
         super.onStop();
         Log.v(TAG, "----------> onStop");
     }
+
+    public SpiceManager getSpiceManager() {
+        return spiceManager;
+    }
+
 }
