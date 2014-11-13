@@ -13,13 +13,13 @@
         android:layout_toStartOf="@+id/expand_post_button"
         android:orientation="vertical">
 
-        <TextView
+        <percolatechallenge.eileenyau.coffee.commons.widgets.TypefacedTextView
             android:id="@+id/entry_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="ENTRY NAME" />
 
-        <TextView
+        <percolatechallenge.eileenyau.coffee.commons.widgets.TypefacedTextView
             android:id="@+id/entry_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
