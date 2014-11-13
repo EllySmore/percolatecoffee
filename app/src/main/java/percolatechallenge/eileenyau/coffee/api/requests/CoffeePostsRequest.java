@@ -2,7 +2,7 @@ package percolatechallenge.eileenyau.coffee.api.requests;
 
 import com.octo.android.robospice.request.okhttp.OkHttpSpiceRequest;
 
-import percolatechallenge.eileenyau.coffee.api.models.CoffeePosts;
+import percolatechallenge.eileenyau.coffee.api.responses.CoffeePosts;
 
 public class CoffeePostsRequest extends OkHttpSpiceRequest<CoffeePosts> {
 
