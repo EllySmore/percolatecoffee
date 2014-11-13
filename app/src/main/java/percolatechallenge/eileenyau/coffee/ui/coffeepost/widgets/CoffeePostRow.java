@@ -38,7 +38,7 @@ public class CoffeePostRow extends RelativeLayout {
         ButterKnife.inject(this);
     }
 
-    public void updateUI(){
+    public void updateUI() {
         //TODO: Update UI
     }
 

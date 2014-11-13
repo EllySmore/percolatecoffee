@@ -1,6 +1,6 @@
 package percolatechallenge.eileenyau.coffee.api.requests;
 
-public class CoffeeExpandedPostRequest {
-    //TODO: WIP
+public class BaseRequest {
 
+    //TODO: WIP
 }

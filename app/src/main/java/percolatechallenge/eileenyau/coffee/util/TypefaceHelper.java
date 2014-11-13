@@ -12,7 +12,7 @@ public class TypefaceHelper {
 
     private static final Hashtable<String, Typeface> cache = new Hashtable<String, Typeface>();
 
-        public static Typeface get(Context c, String assetPath) {
+    public static Typeface get(Context c, String assetPath) {
         synchronized (cache) {
             if (!cache.containsKey(assetPath)) {
                 try {

@@ -4,6 +4,7 @@ import com.octo.android.robospice.request.okhttp.OkHttpSpiceRequest;
 
 import percolatechallenge.eileenyau.coffee.api.responses.CoffeePosts;
 
+
 public class CoffeePostsRequest extends OkHttpSpiceRequest<CoffeePosts> {
 
     public CoffeePostsRequest(Class<CoffeePosts> clazz) {
