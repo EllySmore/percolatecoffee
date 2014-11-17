@@ -1,133 +1,51 @@
 package percolatechallenge.eileenyau.coffee.api.responses;
 
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+public class CoffeeExpandedPost extends CoffeePost {
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
+    private String last_updated_at;
 
-import java.util.HashMap;
-import java.util.Map;
-
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-        "last_updated_at",
-        "desc",
-        "image_url",
-        "id",
-        "name"
-})
-public class CoffeeExpandedPost {
-
-    @JsonProperty("last_updated_at")
-    private String lastUpdatedAt;
-    @JsonProperty("desc")
-    private String desc;
-    @JsonProperty("image_url")
-    private String imageUrl;
-    @JsonProperty("id")
-    private String id;
-    @JsonProperty("name")
-    private String name;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-    /**
-     * @return The lastUpdatedAt
-     */
-    @JsonProperty("last_updated_at")
-    public String getLastUpdatedAt() {
-        return lastUpdatedAt;
+    public String getLast_updated_at() {
+        return last_updated_at;
     }
 
-    /**
-     * @param lastUpdatedAt The last_updated_at
-     */
-    @JsonProperty("last_updated_at")
-    public void setLastUpdatedAt(String lastUpdatedAt) {
-        this.lastUpdatedAt = lastUpdatedAt;
+    public void setLast_updated_at(String last_updated_at) {
+        this.last_updated_at = last_updated_at;
     }
 
-    /**
-     * @return The desc
-     */
-    @JsonProperty("desc")
-    public String getDesc() {
-        return desc;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        if (!super.equals(o)) {
+            return false;
+        }
+
+        CoffeeExpandedPost that = (CoffeeExpandedPost) o;
+
+        if (last_updated_at != null ? !last_updated_at.equals(that.last_updated_at)
+                : that.last_updated_at != null) {
+            return false;
+        }
+
+        return true;
     }
 
-    /**
-     * @param desc The desc
-     */
-    @JsonProperty("desc")
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
-
-    /**
-     * @return The imageUrl
-     */
-    @JsonProperty("image_url")
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    /**
-     * @param imageUrl The image_url
-     */
-    @JsonProperty("image_url")
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    /**
-     * @return The id
-     */
-    @JsonProperty("id")
-    public String getId() {
-        return id;
-    }
-
-    /**
-     * @param id The id
-     */
-    @JsonProperty("id")
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    /**
-     * @return The name
-     */
-    @JsonProperty("name")
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * @param name The name
-     */
-    @JsonProperty("name")
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + (last_updated_at != null ? last_updated_at.hashCode() : 0);
+        return result;
     }
 
     @Override
     public String toString() {
-        return ToStringBuilder.reflectionToString(this);
+        return "CoffeeExpandedPost{" +
+                "last_updated_at='" + last_updated_at + '\'' +
+                '}';
     }
 }

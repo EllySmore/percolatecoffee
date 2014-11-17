@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="percolatechallenge.eileenyau.coffee">
+<manifest package="percolatechallenge.eileenyau.coffee"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -20,8 +20,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.coffeepost.CoffeeActivity"
+            android:label="@string/app_name"></activity>
     </application>
     <service
-        android:name="com.octo.android.robospice.JacksonGoogleHttpClientSpiceService"
+        android:name="com.octo.android.robospice.sample.okhttp.SampleOkHttpSpiceService"
         android:exported="false" />
 </manifest>
