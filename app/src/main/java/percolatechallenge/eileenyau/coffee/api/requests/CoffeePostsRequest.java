@@ -22,7 +22,7 @@ public class CoffeePostsRequest extends OkHttpSpiceRequest<CoffeePost>
 
     private static final String TAG = CoffeePostsRequest.class.getSimpleName();
 
-    private static final String ROUTE = "/coffee";
+    private static final String ROUTE = "/coffee/";
 
     public CoffeePostsRequest() {
         super(CoffeePost.class);
@@ -32,13 +32,11 @@ public class CoffeePostsRequest extends OkHttpSpiceRequest<CoffeePost>
     public CoffeePost loadDataFromNetwork() throws Exception {
 
         Uri.Builder uriBuilder = Uri.parse(Config.getBaseUrl() + ROUTE).buildUpon();
-        URI uri = new URI(uriBuilder.build().toString());
         uriBuilder.appendQueryParameter("api_key", Config.getApiKey());
-
+        URI uri = new URI(uriBuilder.build().toString());
         HttpURLConnection connection = getOkHttpClient().open(uri.toURL());
         InputStream in = null;
         try {
-            // Read the response.
             in = connection.getInputStream();
             Log.v(TAG, "Response: " + IOUtils.toString(in, "UTF-8"));
         } finally {

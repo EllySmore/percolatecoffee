@@ -7,11 +7,13 @@ import android.util.Log;
 import com.octo.android.robospice.SpiceManager;
 import com.octo.android.robospice.okhttp.OkHttpSpiceService;
 
+import percolatechallenge.eileenyau.coffee.api.SpiceService;
+
 public class BaseActivity extends Activity {
 
     private final String TAG = this.getClass().getSimpleName();
 
-    private SpiceManager spiceManager = new SpiceManager(OkHttpSpiceService.class);
+    private SpiceManager spiceManager = new SpiceManager(SpiceService.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
