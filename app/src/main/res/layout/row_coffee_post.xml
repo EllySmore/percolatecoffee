@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="16dp"
-    android:background="@drawable/bg_dark_gray_divider">
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
         android:id="@+id/entry_post_section"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
         android:layout_toLeftOf="@+id/expand_post_button"
         android:layout_toStartOf="@+id/expand_post_button"
+        android:background="@drawable/bg_dark_gray_divider"
         android:orientation="vertical">
 
         <percolatechallenge.eileenyau.coffee.commons.widgets.TypefacedTextView
@@ -31,6 +31,7 @@
             android:id="@+id/entry_img"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:scaleType="fitStart"
             android:src="@android:drawable/ic_menu_gallery" />
     </LinearLayout>
 
@@ -41,6 +42,6 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/entry_post_section"
+        android:layout_marginRight="16dp"
         android:src="@android:drawable/ic_media_play" />
-
-</RelativeLayout>
+</merge>

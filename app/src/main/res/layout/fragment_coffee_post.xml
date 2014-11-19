@@ -3,13 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="16dp"
+    android:background="@drawable/bg_dark_gray_divider"
     android:orientation="vertical">
 
     <percolatechallenge.eileenyau.coffee.commons.widgets.TypefacedTextView
         android:id="@+id/entry_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_dark_gray_divider"
         android:text="ENTRY NAME"
         android:textSize="18sp" />
 
