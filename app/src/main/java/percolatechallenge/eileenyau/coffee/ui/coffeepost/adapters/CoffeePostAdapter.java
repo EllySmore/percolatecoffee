@@ -6,24 +6,27 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import percolatechallenge.eileenyau.coffee.R;
+import percolatechallenge.eileenyau.coffee.api.responses.CoffeePost;
+import percolatechallenge.eileenyau.coffee.api.responses.CoffeePostListing;
 import percolatechallenge.eileenyau.coffee.ui.coffeepost.widgets.CoffeePostRow;
 
 public class CoffeePostAdapter extends BaseAdapter {
 
-    //TODO: WIP
+    private CoffeePostListing mCoffeePostListing = new CoffeePostListing();
+
     @Override
     public int getCount() {
-        return 0;
+        return mCoffeePostListing.getCoffeeData().size();
     }
 
     @Override
-    public Object getItem(int position) {
-        return null;
+    public CoffeePost getItem(int position) {
+        return mCoffeePostListing.getCoffeeData().get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
@@ -34,6 +37,11 @@ public class CoffeePostAdapter extends BaseAdapter {
             rowView = (CoffeePostRow) inflater
                     .inflate(R.layout.row_coffee_post_impl, parent, false);
         }
+        rowView.updateUI(getItem(position));
         return rowView;
+    }
+
+    public void setCoffeePostListing(CoffeePostListing mCoffeePostListing) {
+        this.mCoffeePostListing = mCoffeePostListing;
     }
 }

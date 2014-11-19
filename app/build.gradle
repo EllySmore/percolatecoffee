@@ -29,8 +29,8 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.squareup.picasso:picasso:2.4.0'
-    compile 'com.fasterxml.jackson.datatype:jackson-datatype-json-org:2.4.3'
     compile 'com.jakewharton:butterknife:6.0.0'
     compile 'com.octo.android.robospice:robospice-okhttp:1.4.14'
     compile 'de.greenrobot:eventbus:2.4.0'
+    compile 'com.google.code.gson:gson:2.3'
 }
