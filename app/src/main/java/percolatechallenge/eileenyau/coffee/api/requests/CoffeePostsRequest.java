@@ -1,36 +1,43 @@
 package percolatechallenge.eileenyau.coffee.api.requests;
 
+import com.google.gson.reflect.TypeToken;
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 import com.octo.android.robospice.request.okhttp.OkHttpSpiceRequest;
 
 import org.apache.commons.io.IOUtils;
+import org.json.JSONArray;
 
 import android.net.Uri;
 import android.util.Log;
 
 import java.io.InputStream;
+import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 
+import de.greenrobot.event.EventBus;
 import percolatechallenge.eileenyau.coffee.Config;
+import percolatechallenge.eileenyau.coffee.api.events.CoffeePostListingEvent;
 import percolatechallenge.eileenyau.coffee.api.responses.CoffeePost;
+import percolatechallenge.eileenyau.coffee.api.responses.CoffeePostListing;
+import percolatechallenge.eileenyau.coffee.util.RequestHelperUtil;
 
-
-public class CoffeePostsRequest extends OkHttpSpiceRequest<CoffeePost>
-        implements RequestListener<CoffeePost> {
+public class CoffeePostsRequest extends OkHttpSpiceRequest<CoffeePostListing>
+        implements RequestListener<CoffeePostListing> {
 
     private static final String TAG = CoffeePostsRequest.class.getSimpleName();
 
     private static final String ROUTE = "/coffee/";
 
     public CoffeePostsRequest() {
-        super(CoffeePost.class);
+        super(CoffeePostListing.class);
     }
 
     @Override
-    public CoffeePost loadDataFromNetwork() throws Exception {
-
+    public CoffeePostListing loadDataFromNetwork() throws Exception {
         Uri.Builder uriBuilder = Uri.parse(Config.getBaseUrl() + ROUTE).buildUpon();
         uriBuilder.appendQueryParameter("api_key", Config.getApiKey());
         URI uri = new URI(uriBuilder.build().toString());
@@ -38,7 +45,16 @@ public class CoffeePostsRequest extends OkHttpSpiceRequest<CoffeePost>
         InputStream in = null;
         try {
             in = connection.getInputStream();
-            Log.v(TAG, "Response: " + IOUtils.toString(in, "UTF-8"));
+            String response = IOUtils.toString(in);
+            if (RequestHelperUtil.isJsonArray(response)) {
+                JSONArray jsonArray = new JSONArray(response);
+                Type listType = new TypeToken<List<CoffeePost>>() {
+                }.getType();
+                ArrayList<CoffeePost> coffeePosts = CoffeePost.buildFromJson(jsonArray, CoffeePost.class, listType);
+                CoffeePostListing listingOfCoffeePost = new CoffeePostListing();
+                listingOfCoffeePost.setCoffeeData(coffeePosts);
+                return listingOfCoffeePost;
+            }
         } finally {
             if (in != null) {
                 in.close();
@@ -53,9 +69,9 @@ public class CoffeePostsRequest extends OkHttpSpiceRequest<CoffeePost>
     }
 
     @Override
-    public void onRequestSuccess(CoffeePost coffeePost) {
-        Log.v(TAG, "onRequestSuccess");
+    public void onRequestSuccess(CoffeePostListing coffeePostListing) {
+        Log.v(TAG, "onRequestSuccess: " + coffeePostListing.getCoffeeData().get(0).getImageUrl());
+        EventBus.getDefault().post(new CoffeePostListingEvent(coffeePostListing));
     }
-
 
 }
