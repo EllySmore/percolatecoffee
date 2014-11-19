@@ -1,19 +1,19 @@
 package percolatechallenge.eileenyau.coffee.commons;
 
 import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.octo.android.robospice.SpiceManager;
-import com.octo.android.robospice.okhttp.OkHttpSpiceService;
 
+import de.greenrobot.event.EventBus;
 import percolatechallenge.eileenyau.coffee.api.SpiceService;
 
 public class BaseActivity extends Activity {
 
     private final String TAG = this.getClass().getSimpleName();
-
-    private SpiceManager spiceManager = new SpiceManager(SpiceService.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +23,11 @@ public class BaseActivity extends Activity {
 
     @Override
     protected void onStart() {
-        spiceManager.start(this);
+        try {
+            // Throws exception if Fragment doesn't contain onEvent method
+            EventBus.getDefault().register(this);
+        } catch (Throwable t) {
+        }
         super.onStart();
         Log.v(TAG, "----------> onStart");
     }
@@ -37,18 +41,33 @@ public class BaseActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
+        try {
+            // Throws exception if Fragment doesn't contain onEvent method
+            EventBus.getDefault().unregister(this);
+        } catch (Throwable t) {
+        }
         Log.v(TAG, "----------> onPause");
     }
 
     @Override
     protected void onStop() {
-        spiceManager.shouldStop();
         super.onStop();
         Log.v(TAG, "----------> onStop");
     }
 
-    public SpiceManager getSpiceManager() {
-        return spiceManager;
+    /**
+     * Add fragment to backstack if backstackname is given.
+     *
+     * @param fragment      - Fragment to display
+     * @param backStackName - Name required to put fragment in backstack
+     */
+    public void replaceFragment(Fragment fragment, String backStackName, int containerId) {
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.replace(containerId, fragment);
+        if (backStackName != null) {
+            ft.addToBackStack(backStackName);
+        }
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
     }
-
 }
