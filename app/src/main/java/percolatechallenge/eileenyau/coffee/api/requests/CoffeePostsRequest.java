@@ -39,9 +39,10 @@ public class CoffeePostsRequest extends OkHttpSpiceRequest<CoffeePostListing>
     @Override
     public CoffeePostListing loadDataFromNetwork() throws Exception {
         Uri.Builder uriBuilder = Uri.parse(Config.getBaseUrl() + ROUTE).buildUpon();
-        uriBuilder.appendQueryParameter("api_key", Config.getApiKey());
+        Log.d(TAG, "Url: " + uriBuilder.toString());
         URI uri = new URI(uriBuilder.build().toString());
         HttpURLConnection connection = getOkHttpClient().open(uri.toURL());
+        connection.addRequestProperty("Authorization", Config.getApiKey());
         InputStream in = null;
         try {
             in = connection.getInputStream();
@@ -51,9 +52,9 @@ public class CoffeePostsRequest extends OkHttpSpiceRequest<CoffeePostListing>
                 Type listType = new TypeToken<List<CoffeePost>>() {
                 }.getType();
                 ArrayList<CoffeePost> coffeePosts = CoffeePost.buildFromJson(jsonArray, CoffeePost.class, listType);
-                CoffeePostListing listingOfCoffeePost = new CoffeePostListing();
-                listingOfCoffeePost.setCoffeeData(coffeePosts);
-                return listingOfCoffeePost;
+                CoffeePostListing coffeePostListing = new CoffeePostListing();
+                coffeePostListing.setCoffeeData(coffeePosts);
+                return coffeePostListing;
             }
         } finally {
             if (in != null) {
@@ -65,12 +66,12 @@ public class CoffeePostsRequest extends OkHttpSpiceRequest<CoffeePostListing>
 
     @Override
     public void onRequestFailure(SpiceException spiceException) {
-        Log.v(TAG, "onRequestFailure");
+        Log.d(TAG, "onRequestFailure");
     }
 
     @Override
     public void onRequestSuccess(CoffeePostListing coffeePostListing) {
-        Log.v(TAG, "onRequestSuccess: " + coffeePostListing.getCoffeeData().get(0).getImageUrl());
+        Log.d(TAG, "onRequestSuccess: " + coffeePostListing.getCoffeeData().toString());
         EventBus.getDefault().post(new CoffeePostListingEvent(coffeePostListing));
     }
 
