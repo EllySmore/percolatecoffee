@@ -47,5 +47,8 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/entry_description"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:src="@drawable/expand_arrow" />
 </merge>

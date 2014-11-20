@@ -5,12 +5,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnItemClick;
 import percolatechallenge.eileenyau.coffee.R;
 import percolatechallenge.eileenyau.coffee.api.events.CoffeePostListingEvent;
 import percolatechallenge.eileenyau.coffee.api.requests.CoffeePostsRequest;
@@ -69,5 +71,12 @@ public class CoffeeListingFragment extends BaseFragment {
             mAdapter.notifyDataSetChanged();
         }
     }
+
+    @OnItemClick(R.id.coffee_post_list)
+    protected void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Log.v(TAG, "Position: " + position);
+        CoffeeDisplayData clickedEntry = mAdapter.getItem(position);
+    }
+
 
 }

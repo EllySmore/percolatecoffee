@@ -17,6 +17,7 @@ public class CoffeeDisplayData {
     public String getEntryId() {
         return mCoffeePost.getId();
     }
+
     public String getEntryDescription() {
         return mCoffeePost.getDesc();
     }
