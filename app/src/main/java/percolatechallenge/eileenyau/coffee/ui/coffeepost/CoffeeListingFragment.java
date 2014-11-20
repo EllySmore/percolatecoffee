@@ -7,14 +7,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import percolatechallenge.eileenyau.coffee.R;
 import percolatechallenge.eileenyau.coffee.api.events.CoffeePostListingEvent;
 import percolatechallenge.eileenyau.coffee.api.requests.CoffeePostsRequest;
+import percolatechallenge.eileenyau.coffee.api.responses.CoffeePost;
 import percolatechallenge.eileenyau.coffee.api.responses.CoffeePostListing;
 import percolatechallenge.eileenyau.coffee.commons.BaseFragment;
 import percolatechallenge.eileenyau.coffee.ui.coffeepost.adapters.CoffeePostAdapter;
+import percolatechallenge.eileenyau.coffee.ui.coffeepost.models.CoffeeDisplayData;
 
 public class CoffeeListingFragment extends BaseFragment {
 
@@ -25,7 +29,7 @@ public class CoffeeListingFragment extends BaseFragment {
 
     private View mRootView;
 
-    private CoffeePostListing mCoffeeListing;
+    private ArrayList<CoffeeDisplayData> mCoffeeData = new ArrayList<CoffeeDisplayData>();
 
     private CoffeePostAdapter mAdapter;
 
@@ -57,8 +61,11 @@ public class CoffeeListingFragment extends BaseFragment {
     public void onEventMainThread(CoffeePostListingEvent event) {
         Log.v(TAG, "Recieved event:" + event.getResult());
         if (event.isSuccess()) {
-            mCoffeeListing = event.getResult();
-            mAdapter.setCoffeePostListing(mCoffeeListing);
+            CoffeePostListing mCoffeeListing = event.getResult();
+            for (CoffeePost coffeePost : mCoffeeListing.getCoffeeData()) {
+                mCoffeeData.add(new CoffeeDisplayData(coffeePost));
+            }
+            mAdapter.setData(mCoffeeData);
             mAdapter.notifyDataSetChanged();
         }
     }

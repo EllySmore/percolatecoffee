@@ -13,6 +13,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import percolatechallenge.eileenyau.coffee.R;
 import percolatechallenge.eileenyau.coffee.api.responses.CoffeePost;
+import percolatechallenge.eileenyau.coffee.ui.coffeepost.models.CoffeeDisplayData;
 
 public class CoffeePostRow extends RelativeLayout {
 
@@ -42,10 +43,10 @@ public class CoffeePostRow extends RelativeLayout {
         ButterKnife.inject(this);
     }
 
-    public void updateUI(CoffeePost post) {
-        mEntryName.setText(post.getName());
-        mEntryDescription.setText(post.getDesc());
-        Uri uri = Uri.parse(post.getImageUrl());
+    public void updateUI(CoffeeDisplayData post) {
+        mEntryName.setText(post.getEntryName());
+        mEntryDescription.setText(post.getEntryDescription());
+        Uri uri = Uri.parse(post.getEntryImageUrl());
         Picasso.with(getContext().getApplicationContext()).load(uri).into(mEntryImg);
 
     }
