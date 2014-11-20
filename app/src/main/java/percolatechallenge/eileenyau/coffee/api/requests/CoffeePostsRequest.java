@@ -8,7 +8,6 @@ import com.octo.android.robospice.request.okhttp.OkHttpSpiceRequest;
 import org.apache.commons.io.IOUtils;
 import org.json.JSONArray;
 
-import android.net.Uri;
 import android.util.Log;
 
 import java.io.InputStream;
