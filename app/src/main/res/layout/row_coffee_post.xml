@@ -1,39 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout
-        android:id="@+id/entry_post_section"
+    <percolatechallenge.eileenyau.coffee.commons.widgets.TypefacedTextView
+        android:id="@+id/entry_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="16dp"
         android:layout_toLeftOf="@+id/expand_post_button"
         android:layout_toStartOf="@+id/expand_post_button"
+        android:text="ENTRY NAME"
+        android:textColor="@color/c1"
+        android:textSize="@dimen/entry_name_textsize" />
+
+    <percolatechallenge.eileenyau.coffee.commons.widgets.TypefacedTextView
+        android:id="@+id/entry_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/entry_name"
+        android:layout_toLeftOf="@+id/expand_post_button"
+        android:layout_toStartOf="@+id/expand_post_button"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="ENTRY DESCRIPTION"
+        android:textColor="@color/c2"
+        android:textSize="@dimen/entry_description_textsize" />
+
+    <ImageView
+        android:id="@+id/entry_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/entry_description"
         android:background="@drawable/bg_dark_gray_divider"
-        android:orientation="vertical">
-
-        <percolatechallenge.eileenyau.coffee.commons.widgets.TypefacedTextView
-            android:id="@+id/entry_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ENTRY NAME" />
-
-        <percolatechallenge.eileenyau.coffee.commons.widgets.TypefacedTextView
-            android:id="@+id/entry_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:text="ENTRY DESCRIPTION" />
-
-        <ImageView
-            android:id="@+id/entry_img"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="fitStart"
-            android:src="@android:drawable/ic_menu_gallery" />
-    </LinearLayout>
+        android:scaleType="fitStart"
+        android:src="@android:drawable/ic_menu_gallery" />
 
     <ImageView
         android:id="@+id/expand_post_button"
@@ -41,7 +43,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/entry_post_section"
-        android:layout_marginRight="16dp"
-        android:src="@android:drawable/ic_media_play" />
+        android:layout_alignTop="@+id/entry_description"
+        android:src="@drawable/expand_arrow" />
 </merge>

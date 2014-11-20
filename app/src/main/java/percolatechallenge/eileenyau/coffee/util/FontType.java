@@ -2,7 +2,7 @@ package percolatechallenge.eileenyau.coffee.util;
 
 public enum FontType {
 
-    ROBOTO_REGULAR("roboto_regular.ttf"),;
+    ROBOTO_REGULAR("Roboto-Regular.ttf"),;
 
     private String mFileName;
 
