@@ -74,6 +74,7 @@ public class CoffeeListingFragment extends BaseFragment {
 
     @OnItemClick(R.id.coffee_post_list)
     protected void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        //TODO: Launch new fragment
         Log.v(TAG, "Position: " + position);
         CoffeeDisplayData clickedEntry = mAdapter.getItem(position);
     }

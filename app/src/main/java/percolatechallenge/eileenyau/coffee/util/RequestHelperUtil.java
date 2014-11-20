@@ -1,9 +1,20 @@
 package percolatechallenge.eileenyau.coffee.util;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+
+import android.net.Uri;
+import android.util.Log;
+
+import percolatechallenge.eileenyau.coffee.Config;
+
 public class RequestHelperUtil {
 
-    public static String buildUrlWithParams() {
-        return null;
+    public static URI buildURI(String route) throws URISyntaxException {
+        Uri.Builder uriBuilder = Uri.parse(Config.getBaseUrl() + route).buildUpon();
+        Log.d("RequestHelperUtil", "Url: " + uriBuilder.toString());
+        URI uri = new URI(uriBuilder.build().toString());
+        return uri;
     }
 
     public static boolean isJsonArray(String obj) {

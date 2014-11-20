@@ -38,9 +38,7 @@ public class CoffeePostsRequest extends OkHttpSpiceRequest<CoffeePostListing>
 
     @Override
     public CoffeePostListing loadDataFromNetwork() throws Exception {
-        Uri.Builder uriBuilder = Uri.parse(Config.getBaseUrl() + ROUTE).buildUpon();
-        Log.d(TAG, "Url: " + uriBuilder.toString());
-        URI uri = new URI(uriBuilder.build().toString());
+        URI uri = RequestHelperUtil.buildURI(ROUTE);
         HttpURLConnection connection = getOkHttpClient().open(uri.toURL());
         connection.addRequestProperty("Authorization", Config.getApiKey());
         InputStream in = null;
