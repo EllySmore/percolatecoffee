@@ -5,7 +5,7 @@ public class CoffeeExpandedPost extends CoffeePost {
 
     private String last_updated_at;
 
-    public String getLast_updated_at() {
+    public String getLastUpdatedAt() {
         return last_updated_at;
     }
 
