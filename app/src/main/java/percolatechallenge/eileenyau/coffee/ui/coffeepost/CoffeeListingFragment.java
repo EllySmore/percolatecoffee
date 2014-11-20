@@ -76,8 +76,17 @@ public class CoffeeListingFragment extends BaseFragment {
     protected void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //TODO: Launch new fragment
         Log.v(TAG, "Position: " + position);
-        CoffeeDisplayData clickedEntry = mAdapter.getItem(position);
+        CoffeeDisplayData coffeeData = mAdapter.getItem(position);
+        launchCoffeePostScreen(coffeeData.getEntryId());
     }
 
+    private void launchCoffeePostScreen(String coffeeId) {
+        CoffeePostFragment coffeePostFragment = CoffeePostFragment.newInstance(coffeeId);
+        replaceFragment(coffeePostFragment, TAG, getContainerId());
+    }
+
+    private int getContainerId() {
+        return R.id.container;
+    }
 
 }
