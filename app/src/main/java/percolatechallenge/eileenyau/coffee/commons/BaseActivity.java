@@ -27,6 +27,7 @@ public class BaseActivity extends Activity {
             // Throws exception if Fragment doesn't contain onEvent method
             EventBus.getDefault().register(this);
         } catch (Throwable t) {
+            Log.v(TAG, "Unable to add EventBus");
         }
         super.onStart();
         Log.v(TAG, "----------> onStart");
@@ -41,12 +42,13 @@ public class BaseActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
+        Log.v(TAG, "----------> onPause");
         try {
             // Throws exception if Fragment doesn't contain onEvent method
             EventBus.getDefault().unregister(this);
         } catch (Throwable t) {
+            Log.v(TAG, "Unable to add EventBus");
         }
-        Log.v(TAG, "----------> onPause");
     }
 
     @Override
@@ -70,4 +72,5 @@ public class BaseActivity extends Activity {
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
+
 }
