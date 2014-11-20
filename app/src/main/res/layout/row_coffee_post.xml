@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <percolatechallenge.eileenyau.coffee.commons.widgets.TypefacedTextView
         android:id="@+id/entry_name"
@@ -9,7 +10,8 @@
         android:layout_toStartOf="@+id/expand_post_button"
         android:text="ENTRY NAME"
         android:textColor="@color/c1"
-        android:textSize="@dimen/entry_name_textsize" />
+        android:textSize="@dimen/entry_name_textsize"
+        app:fontName="roboto_light" />
 
     <percolatechallenge.eileenyau.coffee.commons.widgets.TypefacedTextView
         android:id="@+id/entry_description"
@@ -24,7 +26,8 @@
         android:maxLines="2"
         android:text="ENTRY DESCRIPTION"
         android:textColor="@color/c2"
-        android:textSize="@dimen/entry_description_textsize" />
+        android:textSize="@dimen/entry_description_textsize"
+        app:fontName="roboto_light" />
 
     <ImageView
         android:id="@+id/entry_img"

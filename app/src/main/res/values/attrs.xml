@@ -3,7 +3,8 @@
     <declare-styleable name="TypefacedTextView">
         <!-- This is mapped directly to the FontType.  If changes are made here, it should be made in FontType as well -->
         <attr name="fontName">
-            <enum name="roboto_regular" value="0" />
+            <enum name="roboto_regular" value="1" />
+            <enum name="roboto_light" value="0" />
         </attr>
     </declare-styleable>
 </resources>
