@@ -8,8 +8,6 @@ import android.widget.BaseAdapter;
 import java.util.ArrayList;
 
 import percolatechallenge.eileenyau.coffee.R;
-import percolatechallenge.eileenyau.coffee.api.responses.CoffeePost;
-import percolatechallenge.eileenyau.coffee.api.responses.CoffeePostListing;
 import percolatechallenge.eileenyau.coffee.ui.coffeepost.models.CoffeeDisplayData;
 import percolatechallenge.eileenyau.coffee.ui.coffeepost.widgets.CoffeePostRow;
 

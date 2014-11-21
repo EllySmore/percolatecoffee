@@ -1,9 +1,7 @@
 package percolatechallenge.eileenyau.coffee.ui.coffeepost.models;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 import percolatechallenge.eileenyau.coffee.api.responses.CoffeeExpandedPost;

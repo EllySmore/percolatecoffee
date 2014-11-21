@@ -1,6 +1,5 @@
 package percolatechallenge.eileenyau.coffee.ui.coffeepost;
 
-import android.app.Fragment;
 import android.os.Bundle;
 
 import percolatechallenge.eileenyau.coffee.R;

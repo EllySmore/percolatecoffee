@@ -6,10 +6,7 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.octo.android.robospice.SpiceManager;
-
 import de.greenrobot.event.EventBus;
-import percolatechallenge.eileenyau.coffee.api.SpiceService;
 
 public class BaseActivity extends Activity {
 

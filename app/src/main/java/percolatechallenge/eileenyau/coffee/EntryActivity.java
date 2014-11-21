@@ -1,20 +1,10 @@
 package percolatechallenge.eileenyau.coffee;
 
-import com.octo.android.robospice.persistence.exception.SpiceException;
-import com.octo.android.robospice.request.listener.RequestListener;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 
-import java.util.List;
-
-import percolatechallenge.eileenyau.coffee.api.events.CoffeePostListingEvent;
-import percolatechallenge.eileenyau.coffee.api.requests.CoffeePostsRequest;
-import percolatechallenge.eileenyau.coffee.api.responses.CoffeePost;
 import percolatechallenge.eileenyau.coffee.commons.BaseActivity;
 import percolatechallenge.eileenyau.coffee.ui.coffeepost.CoffeeActivity;
 
