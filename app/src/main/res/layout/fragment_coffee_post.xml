@@ -1,30 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="16dp"
     android:orientation="vertical">
 
-    <TextView
+    <percolatechallenge.eileenyau.coffee.commons.widgets.TypefacedTextView
         android:id="@+id/entry_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_dark_gray_divider"
-        android:text="ENTRY NAME"
-        android:textSize="18sp" />
+        android:textColor="@color/c1"
+        android:textSize="@dimen/entry_name_textsize"
+        app:fontName="roboto_light" />
 
-    <TextView
+    <percolatechallenge.eileenyau.coffee.commons.widgets.TypefacedTextView
         android:id="@+id/entry_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="ENTRY DESCRIPTION"
-        android:textSize="14sp" />
+        android:textColor="@color/c2"
+        android:textSize="@dimen/entry_description_textsize"
+        app:fontName="roboto_light" />
 
     <ImageView
         android:id="@+id/entry_img"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp" />
+
+    <percolatechallenge.eileenyau.coffee.commons.widgets.TypefacedTextView
+        android:id="@+id/entry_time_updated"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:src="@android:drawable/ic_menu_gallery" />
+        android:textColor="@color/c2"
+        android:textSize="@dimen/entry_time_updated_textsize"
+        app:fontName="roboto_light_italic" />
 </LinearLayout>

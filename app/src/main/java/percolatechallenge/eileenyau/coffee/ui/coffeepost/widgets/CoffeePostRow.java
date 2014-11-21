@@ -1,14 +1,19 @@
 package percolatechallenge.eileenyau.coffee.ui.coffeepost.widgets;
 
 import android.content.Context;
+import android.net.Uri;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import percolatechallenge.eileenyau.coffee.R;
+import percolatechallenge.eileenyau.coffee.api.responses.CoffeePost;
+import percolatechallenge.eileenyau.coffee.ui.coffeepost.models.CoffeeDisplayData;
 
 public class CoffeePostRow extends RelativeLayout {
 
@@ -38,8 +43,12 @@ public class CoffeePostRow extends RelativeLayout {
         ButterKnife.inject(this);
     }
 
-    public void updateUI(){
-        //TODO: Update UI
+    public void updateUI(CoffeeDisplayData post) {
+        mEntryName.setText(post.getEntryName());
+        mEntryDescription.setText(post.getEntryDescription());
+        Uri uri = Uri.parse(post.getEntryImageUrl());
+        Picasso.with(getContext().getApplicationContext()).load(uri).into(mEntryImg);
+
     }
 
 }

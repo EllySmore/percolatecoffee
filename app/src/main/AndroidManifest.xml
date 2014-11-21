@@ -13,15 +13,23 @@
         android:theme="@style/AppTheme">
         <activity
             android:name="percolatechallenge.eileenyau.coffee.EntryActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="percolatechallenge.eileenyau.coffee.ui.coffeepost.CoffeeActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"></activity>
+
+        <service
+            android:name="percolatechallenge.eileenyau.coffee.api.SpiceService"
+            android:exported="false" />
     </application>
-    <service
-        android:name="com.octo.android.robospice.JacksonGoogleHttpClientSpiceService"
-        android:exported="false" />
+
 </manifest>

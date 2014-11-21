@@ -1,39 +1,42 @@
 package percolatechallenge.eileenyau.coffee;
 
+import com.octo.android.robospice.persistence.exception.SpiceException;
+import com.octo.android.robospice.request.listener.RequestListener;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.List;
+
+import percolatechallenge.eileenyau.coffee.api.events.CoffeePostListingEvent;
+import percolatechallenge.eileenyau.coffee.api.requests.CoffeePostsRequest;
+import percolatechallenge.eileenyau.coffee.api.responses.CoffeePost;
 import percolatechallenge.eileenyau.coffee.commons.BaseActivity;
+import percolatechallenge.eileenyau.coffee.ui.coffeepost.CoffeeActivity;
 
 public class EntryActivity extends BaseActivity {
+
+    private static final String TAG = EntryActivity.class.getSimpleName();
+    private Handler mHandler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entry);
+        final Intent launchIntent = new Intent();
+        launchIntent.setClass(getApplicationContext(), CoffeeActivity.class);
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                startActivity(launchIntent);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                finish();
+            }
+        }, 1000);
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_entry, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

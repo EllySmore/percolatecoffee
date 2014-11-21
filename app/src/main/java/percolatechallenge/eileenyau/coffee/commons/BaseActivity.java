@@ -1,8 +1,15 @@
 package percolatechallenge.eileenyau.coffee.commons;
 
 import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.util.Log;
+
+import com.octo.android.robospice.SpiceManager;
+
+import de.greenrobot.event.EventBus;
+import percolatechallenge.eileenyau.coffee.api.SpiceService;
 
 public class BaseActivity extends Activity {
 
@@ -16,6 +23,12 @@ public class BaseActivity extends Activity {
 
     @Override
     protected void onStart() {
+        try {
+            // Throws exception if Fragment doesn't contain onEvent method
+            EventBus.getDefault().register(this);
+        } catch (Throwable t) {
+            Log.v(TAG, "Unable to add EventBus");
+        }
         super.onStart();
         Log.v(TAG, "----------> onStart");
     }
@@ -30,6 +43,12 @@ public class BaseActivity extends Activity {
     protected void onPause() {
         super.onPause();
         Log.v(TAG, "----------> onPause");
+        try {
+            // Throws exception if Fragment doesn't contain onEvent method
+            EventBus.getDefault().unregister(this);
+        } catch (Throwable t) {
+            Log.v(TAG, "Unable to add EventBus");
+        }
     }
 
     @Override
@@ -37,4 +56,21 @@ public class BaseActivity extends Activity {
         super.onStop();
         Log.v(TAG, "----------> onStop");
     }
+
+    /**
+     * Add fragment to backstack if backstackname is given.
+     *
+     * @param fragment      - Fragment to display
+     * @param backStackName - Name required to put fragment in backstack
+     */
+    public void replaceFragment(Fragment fragment, String backStackName, int containerId) {
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.replace(containerId, fragment);
+        if (backStackName != null) {
+            ft.addToBackStack(backStackName);
+        }
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
+    }
+
 }

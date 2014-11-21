@@ -1,38 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="16dp"
-    android:background="@drawable/bg_dark_gray_divider">
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-        android:id="@+id/entry_post_section"
+    <percolatechallenge.eileenyau.coffee.commons.widgets.TypefacedTextView
+        android:id="@+id/entry_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@+id/expand_post_button"
         android:layout_toStartOf="@+id/expand_post_button"
-        android:orientation="vertical">
+        android:textColor="@color/c1"
+        android:textSize="@dimen/entry_name_textsize"
+        app:fontName="roboto_light" />
 
-        <TextView
-            android:id="@+id/entry_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ENTRY NAME" />
+    <percolatechallenge.eileenyau.coffee.commons.widgets.TypefacedTextView
+        android:id="@+id/entry_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/entry_name"
+        android:layout_toLeftOf="@+id/expand_post_button"
+        android:layout_toStartOf="@+id/expand_post_button"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/c2"
+        android:textSize="@dimen/entry_description_textsize"
+        app:fontName="roboto_light" />
 
-        <TextView
-            android:id="@+id/entry_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:text="ENTRY DESCRIPTION" />
-
-        <ImageView
-            android:id="@+id/entry_img"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_menu_gallery" />
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/entry_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/entry_description"
+        android:background="@drawable/bg_dark_gray_divider"
+        android:scaleType="fitStart"
+        android:src="@android:drawable/ic_menu_gallery" />
 
     <ImageView
         android:id="@+id/expand_post_button"
@@ -40,7 +44,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/entry_post_section"
-        android:src="@android:drawable/ic_media_play" />
-
-</RelativeLayout>
+        android:layout_alignTop="@+id/entry_description"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:src="@drawable/expand_arrow" />
+</merge>

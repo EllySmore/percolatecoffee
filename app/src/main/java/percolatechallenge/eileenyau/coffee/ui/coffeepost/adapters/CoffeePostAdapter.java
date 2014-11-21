@@ -5,28 +5,45 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import java.util.ArrayList;
+
+import percolatechallenge.eileenyau.coffee.R;
+import percolatechallenge.eileenyau.coffee.api.responses.CoffeePost;
+import percolatechallenge.eileenyau.coffee.api.responses.CoffeePostListing;
+import percolatechallenge.eileenyau.coffee.ui.coffeepost.models.CoffeeDisplayData;
 import percolatechallenge.eileenyau.coffee.ui.coffeepost.widgets.CoffeePostRow;
 
 public class CoffeePostAdapter extends BaseAdapter {
+
+    private ArrayList<CoffeeDisplayData> mData = new ArrayList<CoffeeDisplayData>();
+
     @Override
     public int getCount() {
-        return 0;
+        return mData.size();
     }
 
     @Override
-    public Object getItem(int position) {
-        return null;
+    public CoffeeDisplayData getItem(int position) {
+        return mData.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         CoffeePostRow rowView = (CoffeePostRow) convertView;
-        LayoutInflater inflater;
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        if (rowView == null) {
+            rowView = (CoffeePostRow) inflater.inflate(R.layout.row_coffee_post_impl, parent, false);
+        }
+        rowView.updateUI(getItem(position));
         return rowView;
+    }
+
+    public void setData(ArrayList<CoffeeDisplayData> data) {
+        this.mData = data;
     }
 }
