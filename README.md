@@ -24,5 +24,8 @@ I made the request also a resultlistener and sent the result on the default even
 One place to make request and listen for response.
 I did not use Jackson, didn't have enough time to dwell into it. 
 
+Things I should have done:
+-JUnit Testing. 
+
 Let me know if you have any questions.
 Cheers.
