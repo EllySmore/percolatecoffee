@@ -86,11 +86,18 @@ public class CoffeePostFragment extends BaseFragment {
         mEntryName.setText(mCoffeeData.getEntryName());
         mEntryDescription.setText(mCoffeeData.getEntryDescription());
         Picasso.with(getActivity()).load(mCoffeeData.getEntryImageUrl()).into(mEntryImage);
+        updateNavTitle();
+    }
+
+    private void updateNavTitle() {
+        if (getActionBar() != null) {
+            getActionBar().setTitle(mCoffeeData.getEntryName());
+        }
     }
 
     @SuppressWarnings("UnusedDeclaration")
     public void onEventMainThread(CoffeeExpandedPostEvent event) {
-        Log.v(TAG, "Recieved event:" + event.getResult());
+        Log.v(TAG, "Received event:" + event.getResult());
         if (event.isSuccess()) {
             mCoffeeData = new CoffeeExpandedPostData(event.getResult());
             updateUI();

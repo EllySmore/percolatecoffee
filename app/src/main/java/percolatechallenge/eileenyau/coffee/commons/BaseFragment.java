@@ -1,5 +1,6 @@
 package percolatechallenge.eileenyau.coffee.commons;
 
+import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.util.Log;
@@ -66,5 +67,13 @@ public class BaseFragment extends Fragment {
      */
     public void removeCurrentFragment() {
         getActivity().getFragmentManager().popBackStack();
+    }
+
+    public ActionBar getActionBar(){
+        if(getActivity().getActionBar()==null){
+            return null;
+        }
+        return getActivity().getActionBar();
+
     }
 }

@@ -23,8 +23,4 @@ public class CoffeeActivity extends BaseActivity {
         return R.id.container;
     }
 
-    public void replaceFragment(Fragment fragment, String backStackName) {
-        replaceFragment(fragment, backStackName, getContainerId());
-    }
-
 }

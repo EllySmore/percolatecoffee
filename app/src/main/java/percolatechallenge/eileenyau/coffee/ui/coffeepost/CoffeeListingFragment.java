@@ -49,6 +49,12 @@ public class CoffeeListingFragment extends BaseFragment {
         return mRootView;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        getActionBar().setTitle(getString(R.string.app_name));
+    }
+
     private void setAdapter() {
         mAdapter = new CoffeePostAdapter();
         mList.setAdapter(mAdapter);
@@ -61,7 +67,7 @@ public class CoffeeListingFragment extends BaseFragment {
 
     @SuppressWarnings("UnusedDeclaration")
     public void onEventMainThread(CoffeePostListingEvent event) {
-        Log.v(TAG, "Recieved event:" + event.getResult());
+        Log.v(TAG, "Received event:" + event.getResult());
         if (event.isSuccess()) {
             CoffeePostListing mCoffeeListing = event.getResult();
             for (CoffeePost coffeePost : mCoffeeListing.getCoffeeData()) {
@@ -74,7 +80,6 @@ public class CoffeeListingFragment extends BaseFragment {
 
     @OnItemClick(R.id.coffee_post_list)
     protected void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        //TODO: Launch new fragment
         Log.v(TAG, "Position: " + position);
         CoffeeDisplayData coffeeData = mAdapter.getItem(position);
         launchCoffeePostScreen(coffeeData.getEntryId());
