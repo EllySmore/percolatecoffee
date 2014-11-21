@@ -69,6 +69,7 @@ public class CoffeeListingFragment extends BaseFragment {
     public void onEventMainThread(CoffeePostListingEvent event) {
         Log.v(TAG, "Received event:" + event.getResult());
         if (event.isSuccess()) {
+            mCoffeeData.clear();
             CoffeePostListing mCoffeeListing = event.getResult();
             for (CoffeePost coffeePost : mCoffeeListing.getCoffeeData()) {
                 mCoffeeData.add(new CoffeeDisplayData(coffeePost));
