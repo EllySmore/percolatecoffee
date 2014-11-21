@@ -10,19 +10,19 @@ import percolatechallenge.eileenyau.coffee.R;
 import percolatechallenge.eileenyau.coffee.util.FontType;
 import percolatechallenge.eileenyau.coffee.util.TypefaceHelper;
 
-public class TypefacedTextView extends TextView {
+public class FontTextView extends TextView {
 
-    public TypefacedTextView(Context context) {
+    public FontTextView(Context context) {
         super(context);
         init(null);
     }
 
-    public TypefacedTextView(Context context, AttributeSet attrs) {
+    public FontTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(attrs);
     }
 
-    public TypefacedTextView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public FontTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(attrs);
     }
@@ -30,8 +30,8 @@ public class TypefacedTextView extends TextView {
     private void init(AttributeSet attrs) {
         if (!isInEditMode()) {
             TypedArray styledAttrs = getContext()
-                    .obtainStyledAttributes(attrs, R.styleable.TypefacedTextView);
-            int fontIntValue = styledAttrs.getInt(R.styleable.TypefacedTextView_fontName,
+                    .obtainStyledAttributes(attrs, R.styleable.FontTextView);
+            int fontIntValue = styledAttrs.getInt(R.styleable.FontTextView_fontName,
                     FontType.ROBOTO_REGULAR.ordinal());
             styledAttrs.recycle();
 

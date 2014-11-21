@@ -5,7 +5,7 @@
     android:background="@android:color/white"
     tools:context=".EntryActivity">
 
-    <percolatechallenge.eileenyau.coffee.commons.widgets.TypefacedTextView
+    <percolatechallenge.eileenyau.coffee.commons.widgets.FontTextView
         android:id="@+id/app_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

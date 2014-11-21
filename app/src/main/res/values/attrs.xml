@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="TypefacedTextView">
+    <declare-styleable name="FontTextView">
         <!-- This is mapped directly to the FontType.  If changes are made here, it should be made in FontType as well -->
         <attr name="fontName">
             <enum name="roboto_regular" value="0" />
