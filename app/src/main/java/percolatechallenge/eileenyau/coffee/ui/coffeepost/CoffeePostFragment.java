@@ -67,9 +67,14 @@ public class CoffeePostFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.fragment_coffee_post, container, false);
         ButterKnife.inject(this, mRootView);
-        getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
         fetchCoffeePost();
         return mRootView;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
