@@ -4,4 +4,5 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="entry_name_textsize">22sp</dimen>
     <dimen name="entry_description_textsize">20sp</dimen>
+    <dimen name="entry_time_updated_textsize">15sp</dimen>
 </resources>

@@ -5,6 +5,7 @@
         <attr name="fontName">
             <enum name="roboto_regular" value="0" />
             <enum name="roboto_light" value="1" />
+            <enum name="roboto_light_italic" value="2" />
         </attr>
     </declare-styleable>
 </resources>

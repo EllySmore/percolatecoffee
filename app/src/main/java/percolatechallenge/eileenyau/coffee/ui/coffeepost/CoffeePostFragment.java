@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.text.ParseException;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import percolatechallenge.eileenyau.coffee.R;
@@ -33,6 +35,9 @@ public class CoffeePostFragment extends BaseFragment {
 
     @InjectView(R.id.entry_img)
     protected ImageView mEntryImage;
+
+    @InjectView(R.id.entry_time_updated)
+    protected TextView mEntryLastUpdated;
 
     private View mRootView;
 
@@ -82,10 +87,13 @@ public class CoffeePostFragment extends BaseFragment {
         getSpiceManager().execute(request, request);
     }
 
-    private void updateUI() {
+    private void updateUI() throws ParseException {
         mEntryName.setText(mCoffeeData.getEntryName());
         mEntryDescription.setText(mCoffeeData.getEntryDescription());
-        Picasso.with(getActivity()).load(mCoffeeData.getEntryImageUrl()).into(mEntryImage);
+        if (!mCoffeeData.getEntryImageUrl().isEmpty()) {
+            Picasso.with(getActivity()).load(mCoffeeData.getEntryImageUrl()).into(mEntryImage);
+        }
+        mEntryLastUpdated.setText("Updated " + mCoffeeData.getFormattedLastTimeUpdated() + " ago");
         updateNavTitle();
     }
 
@@ -96,7 +104,7 @@ public class CoffeePostFragment extends BaseFragment {
     }
 
     @SuppressWarnings("UnusedDeclaration")
-    public void onEventMainThread(CoffeeExpandedPostEvent event) {
+    public void onEventMainThread(CoffeeExpandedPostEvent event) throws ParseException {
         Log.v(TAG, "Received event:" + event.getResult());
         if (event.isSuccess()) {
             mCoffeeData = new CoffeeExpandedPostData(event.getResult());

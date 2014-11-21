@@ -8,7 +8,6 @@
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@+id/expand_post_button"
         android:layout_toStartOf="@+id/expand_post_button"
-        android:text="ENTRY NAME"
         android:textColor="@color/c1"
         android:textSize="@dimen/entry_name_textsize"
         app:fontName="roboto_light" />
@@ -24,7 +23,6 @@
         android:layout_toStartOf="@+id/expand_post_button"
         android:ellipsize="end"
         android:maxLines="2"
-        android:text="ENTRY DESCRIPTION"
         android:textColor="@color/c2"
         android:textSize="@dimen/entry_description_textsize"
         app:fontName="roboto_light" />
