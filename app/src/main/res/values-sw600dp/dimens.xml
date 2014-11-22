@@ -5,4 +5,6 @@
     <dimen name="entry_name_textsize">22sp</dimen>
     <dimen name="entry_description_textsize">20sp</dimen>
     <dimen name="entry_time_updated_textsize">15sp</dimen>
+    <dimen name="entry_name_textsize_large">30sp</dimen>
+    <dimen name="entry_description_textsize_large">18sp</dimen>
 </resources>
