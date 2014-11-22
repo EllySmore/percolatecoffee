@@ -1,13 +1,16 @@
 package percolatechallenge.eileenyau.coffee.ui.coffeepost;
 
+import android.content.ActivityNotFoundException;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -20,12 +23,15 @@ import percolatechallenge.eileenyau.coffee.api.events.CoffeeExpandedPostEvent;
 import percolatechallenge.eileenyau.coffee.api.requests.CoffeeExpandedPostRequest;
 import percolatechallenge.eileenyau.coffee.commons.BaseFragment;
 import percolatechallenge.eileenyau.coffee.ui.coffeepost.models.CoffeeExpandedPostData;
+import percolatechallenge.eileenyau.coffee.util.ContactUtil;
 
 public class CoffeePostFragment extends BaseFragment {
 
     private static final String TAG = CoffeePostFragment.class.getSimpleName();
 
-    private static String PARAM_COFFEE_ID = "PARAM_COFFEE_ID";
+    private static final String PARAM_COFFEE_ID = "PARAM_COFFEE_ID";
+
+    private static final int MENU_EMAIL = 100;
 
     @InjectView(R.id.entry_name)
     protected TextView mEntryName;
@@ -78,10 +84,21 @@ public class CoffeePostFragment extends BaseFragment {
     }
 
     @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        menu.clear();
+        menu.add(Menu.NONE, MENU_EMAIL, Menu.NONE, R.string.email).
+                setIcon(R.drawable.nav_mail).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+        super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 removeCurrentFragment();
+                break;
+            case MENU_EMAIL:
+                emailPost();
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -105,6 +122,21 @@ public class CoffeePostFragment extends BaseFragment {
     private void updateNavTitle() {
         if (getActionBar() != null) {
             getActionBar().setTitle(mCoffeeData.getEntryName());
+        }
+    }
+
+    private void emailPost() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(mCoffeeData.getEntryName());
+        stringBuilder.append(mCoffeeData.getEntryDescription());
+        stringBuilder.append(mCoffeeData.getEntryImageUrl());
+        stringBuilder.append(mCoffeeData.getLastTimeUpdated());
+        String emailBody = stringBuilder.toString();
+        try {
+            ContactUtil.sendEmail(getActivity(), "", getString(R.string.app_name), emailBody);
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(getActivity(), getString(R.string.email_error_msg),
+                    Toast.LENGTH_SHORT).show();
         }
     }
 
