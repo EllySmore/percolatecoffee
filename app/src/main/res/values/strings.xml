@@ -4,5 +4,6 @@
     <string name="app_name">Coffee</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-
+    <string name="email">Email</string>
+    <string name="email_error_msg">Not able to send email.\nPlease set up email application.</string>
 </resources>
