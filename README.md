@@ -1,5 +1,5 @@
-Eileen Yau
-Percolate App Challenge
+Eileen Yau - Percolate Coffee
+Summary: Android App that displays coffee post from Percolate Coffee API.
 
 Instructions:
 Compiled on *Andriod Studio* 
@@ -15,17 +15,6 @@ Lib Used:
 Other Sources:
 http://romannurik.github.io/AndroidAssetStudio/ to generate custom action bar.
 
-Summary:
-I separated the data from UI and strictly followed MVC and Single Responsiblity Principal.
-You can see how things are organized in certain directories and classes are strictly for UI
-only.
-I used Robospice OkHttpclient. I'm not really familiar with it but
-I made the request also a resultlistener and sent the result on the default EventBus.
-It was easier to follow the request and listen for response.
-I did not use Jackson, didn't have enough time to dwell into it. 
-
-Things I should have done:
+TODOS:
 -JUnit Testing. 
 
-Let me know if you have any questions.
-Cheers.
