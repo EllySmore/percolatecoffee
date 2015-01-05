@@ -28,7 +28,6 @@ public class BaseFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        getActivity().getActionBar().setDisplayHomeAsUpEnabled(false);
         spiceManager.start(getActivity());
         Log.v(TAG, "OnStart");
         try {

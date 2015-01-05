@@ -2,6 +2,7 @@ package percolatechallenge.eileenyau.coffee.ui.coffeepost;
 
 import android.content.ActivityNotFoundException;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -70,7 +71,8 @@ public class CoffeePostFragment extends BaseFragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+            Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.fragment_coffee_post, container, false);
         ButterKnife.inject(this, mRootView);
         fetchCoffeePost();
@@ -78,9 +80,10 @@ public class CoffeePostFragment extends BaseFragment {
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-        getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
+    public void onResume() {
+        super.onResume();
+        ((ActionBarActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((ActionBarActivity) getActivity()).getSupportActionBar().setTitle(mCoffeeId);
     }
 
     @Override
@@ -116,7 +119,7 @@ public class CoffeePostFragment extends BaseFragment {
             Picasso.with(getActivity()).load(mCoffeeData.getEntryImageUrl()).into(mEntryImage);
         }
         mEntryLastUpdated.setText("Updated " + mCoffeeData.getFormattedLastTimeUpdated() + " ago");
-        updateNavTitle();
+//        updateNavTitle();
     }
 
     private void updateNavTitle() {

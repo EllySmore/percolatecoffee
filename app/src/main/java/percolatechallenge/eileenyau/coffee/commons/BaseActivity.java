@@ -4,11 +4,12 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 
 import de.greenrobot.event.EventBus;
 
-public class BaseActivity extends Activity {
+public class BaseActivity extends ActionBarActivity {
 
     private final String TAG = this.getClass().getSimpleName();
 

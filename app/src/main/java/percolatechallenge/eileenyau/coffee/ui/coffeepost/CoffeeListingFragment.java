@@ -1,6 +1,7 @@
 package percolatechallenge.eileenyau.coffee.ui.coffeepost;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,7 +42,8 @@ public class CoffeeListingFragment extends BaseFragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+            Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.fragment_coffee_listing, container, false);
         ButterKnife.inject(this, mRootView);
         setAdapter();
@@ -52,7 +54,8 @@ public class CoffeeListingFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        getActionBar().setTitle(getString(R.string.app_name));
+        ((ActionBarActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        ((ActionBarActivity) getActivity()).getSupportActionBar().setTitle(R.string.app_name);
     }
 
     private void setAdapter() {
