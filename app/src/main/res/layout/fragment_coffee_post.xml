@@ -3,46 +3,61 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     android:fillViewport="true">
 
-    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <percolatechallenge.eileenyau.coffee.commons.widgets.FontTextView
-            android:id="@+id/entry_name"
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+
+        <LinearLayout
+            android:id="@+id/entry"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_dark_gray_divider"
-            android:textColor="@color/c1"
-            android:textSize="@dimen/entry_name_textsize_large"
-            app:fontName="roboto_light" />
+            android:orientation="vertical"
+            android:padding="16dp">
 
-        <percolatechallenge.eileenyau.coffee.commons.widgets.FontTextView
-            android:id="@+id/entry_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:textColor="@color/c2"
-            android:textSize="@dimen/entry_description_textsize_large"
-            app:fontName="roboto_light" />
+            <TextView
+                android:id="@+id/entry_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_dark_gray_divider"
+                android:fontFamily="sans-serif-light"
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/entry_name_textsize_large" />
 
-        <ImageView
-            android:id="@+id/entry_img"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp" />
+            <TextView
+                android:id="@+id/entry_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="sans-serif-light"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/entry_description_textsize_large" />
 
-        <percolatechallenge.eileenyau.coffee.commons.widgets.FontTextView
-            android:id="@+id/entry_time_updated"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textColor="@color/c2"
-            android:textSize="@dimen/entry_time_updated_textsize"
-            app:fontName="roboto_light_italic" />
+            <ImageView
+                android:id="@+id/entry_img"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/entry_time_updated"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="sans-serif-light"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/entry_time_updated_textsize"
+                android:textStyle="italic" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
 </ScrollView>

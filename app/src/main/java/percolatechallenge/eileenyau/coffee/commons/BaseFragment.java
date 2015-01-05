@@ -28,7 +28,6 @@ public class BaseFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        getActivity().getActionBar().setDisplayHomeAsUpEnabled(false);
         spiceManager.start(getActivity());
         Log.v(TAG, "OnStart");
         try {
@@ -42,8 +41,14 @@ public class BaseFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        spiceManager.shouldStop();
         Log.v(TAG, "onPause");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        spiceManager.shouldStop();
+        Log.v(TAG, "onStop");
         try {
             // Throws exception if Fragment doesn't contain onEvent method
             EventBus.getDefault().unregister(this);
@@ -75,8 +80,8 @@ public class BaseFragment extends Fragment {
         getActivity().getFragmentManager().popBackStack();
     }
 
-    public ActionBar getActionBar(){
-        if(getActivity().getActionBar()==null){
+    public ActionBar getActionBar() {
+        if (getActivity().getActionBar() == null) {
             return null;
         }
         return getActivity().getActionBar();

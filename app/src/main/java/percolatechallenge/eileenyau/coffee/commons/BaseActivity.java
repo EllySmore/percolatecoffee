@@ -4,11 +4,12 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 
 import de.greenrobot.event.EventBus;
 
-public class BaseActivity extends Activity {
+public class BaseActivity extends ActionBarActivity {
 
     private final String TAG = this.getClass().getSimpleName();
 
@@ -20,12 +21,6 @@ public class BaseActivity extends Activity {
 
     @Override
     protected void onStart() {
-        try {
-            // Throws exception if Fragment doesn't contain onEvent method
-            EventBus.getDefault().register(this);
-        } catch (Throwable t) {
-            Log.v(TAG, "Unable to add EventBus");
-        }
         super.onStart();
         Log.v(TAG, "----------> onStart");
     }
@@ -40,18 +35,21 @@ public class BaseActivity extends Activity {
     protected void onPause() {
         super.onPause();
         Log.v(TAG, "----------> onPause");
-        try {
-            // Throws exception if Fragment doesn't contain onEvent method
-            EventBus.getDefault().unregister(this);
-        } catch (Throwable t) {
-            Log.v(TAG, "Unable to add EventBus");
-        }
     }
 
     @Override
     protected void onStop() {
         super.onStop();
         Log.v(TAG, "----------> onStop");
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount() > 0) {
+            getFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
+        }
     }
 
     /**
