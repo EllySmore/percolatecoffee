@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 
@@ -29,6 +30,9 @@ public class CoffeeListingFragment extends BaseFragment {
 
     @InjectView(R.id.coffee_post_list)
     protected ListView mList;
+
+    @InjectView(R.id.progress_bar)
+    protected ProgressBar mProgressBar;
 
     private View mRootView;
 
@@ -63,14 +67,25 @@ public class CoffeeListingFragment extends BaseFragment {
         mList.setAdapter(mAdapter);
     }
 
+    private void showLoading(boolean isLoading) {
+        if (isLoading) {
+            mProgressBar.setVisibility(View.VISIBLE);
+            mList.setVisibility(View.INVISIBLE);
+        } else {
+            mProgressBar.setVisibility(View.INVISIBLE);
+            mList.setVisibility(View.VISIBLE);
+        }
+    }
+
     private void getCoffeePostListing() {
+        showLoading(true);
         CoffeePostsRequest request = new CoffeePostsRequest();
         getSpiceManager().execute(request, request);
     }
 
     @SuppressWarnings("UnusedDeclaration")
     public void onEventMainThread(CoffeePostListingEvent event) {
-        Log.v(TAG, "Received event:" + event.getResult());
+        showLoading(false);
         if (event.isSuccess()) {
             mCoffeeData.clear();
             CoffeePostListing mCoffeeListing = event.getResult();
@@ -84,7 +99,6 @@ public class CoffeeListingFragment extends BaseFragment {
 
     @OnItemClick(R.id.coffee_post_list)
     protected void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Log.v(TAG, "Position: " + position);
         CoffeeDisplayData coffeeData = mAdapter.getItem(position);
         launchCoffeePostScreen(coffeeData.getEntryId());
     }
