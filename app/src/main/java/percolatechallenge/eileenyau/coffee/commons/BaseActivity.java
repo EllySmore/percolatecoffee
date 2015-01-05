@@ -55,6 +55,15 @@ public class BaseActivity extends ActionBarActivity {
         Log.v(TAG, "----------> onStop");
     }
 
+    @Override
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount() > 0) {
+            getFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
     /**
      * Add fragment to backstack if backstackname is given.
      *
