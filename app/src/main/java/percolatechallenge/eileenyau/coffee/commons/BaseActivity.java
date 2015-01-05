@@ -21,12 +21,6 @@ public class BaseActivity extends ActionBarActivity {
 
     @Override
     protected void onStart() {
-        try {
-            // Throws exception if Fragment doesn't contain onEvent method
-            EventBus.getDefault().register(this);
-        } catch (Throwable t) {
-            Log.v(TAG, "Unable to add EventBus");
-        }
         super.onStart();
         Log.v(TAG, "----------> onStart");
     }
@@ -41,12 +35,6 @@ public class BaseActivity extends ActionBarActivity {
     protected void onPause() {
         super.onPause();
         Log.v(TAG, "----------> onPause");
-        try {
-            // Throws exception if Fragment doesn't contain onEvent method
-            EventBus.getDefault().unregister(this);
-        } catch (Throwable t) {
-            Log.v(TAG, "Unable to add EventBus");
-        }
     }
 
     @Override

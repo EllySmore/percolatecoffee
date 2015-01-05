@@ -119,13 +119,6 @@ public class CoffeePostFragment extends BaseFragment {
             Picasso.with(getActivity()).load(mCoffeeData.getEntryImageUrl()).into(mEntryImage);
         }
         mEntryLastUpdated.setText("Updated " + mCoffeeData.getFormattedLastTimeUpdated() + " ago");
-//        updateNavTitle();
-    }
-
-    private void updateNavTitle() {
-        if (getActionBar() != null) {
-            getActionBar().setTitle(mCoffeeData.getEntryName());
-        }
     }
 
     private void emailPost() {
