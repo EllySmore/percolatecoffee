@@ -17,6 +17,7 @@ public class CoffeeActivity extends BaseActivity {
         mToolBar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolBar);
         getSupportActionBar().setTitle(R.string.app_name);
+        getSupportActionBar().setLogo(R.drawable.drip_white);
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
                     .add(getContainerId(), CoffeeListingFragment.newInstance())
