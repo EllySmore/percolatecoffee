@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_dark_gray_divider"
             android:fontFamily="sans-serif-light"
-            android:textColor="@color/c1"
+            android:textColor="@color/dark_gray"
             android:textSize="@dimen/entry_name_textsize_large" />
 
         <TextView
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:fontFamily="sans-serif-light"
-            android:textColor="@color/c2"
+            android:textColor="@color/gray"
             android:textSize="@dimen/entry_description_textsize_large" />
 
         <ImageView
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="sans-serif-light"
-            android:textColor="@color/c2"
+            android:textColor="@color/gray"
             android:textSize="@dimen/entry_time_updated_textsize"
             android:textStyle="italic" />
 

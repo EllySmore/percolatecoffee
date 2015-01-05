@@ -8,7 +8,7 @@
         android:layout_toLeftOf="@+id/expand_post_button"
         android:layout_toStartOf="@+id/expand_post_button"
         android:fontFamily="sans-serif-light"
-        android:textColor="@color/c1"
+        android:textColor="@color/dark_gray"
         android:textSize="@dimen/entry_name_textsize" />
 
     <TextView
@@ -23,7 +23,7 @@
         android:ellipsize="end"
         android:fontFamily="sans-serif-light"
         android:maxLines="2"
-        android:textColor="@color/c2"
+        android:textColor="@color/gray"
         android:textSize="@dimen/entry_description_textsize" />
 
     <ImageView
