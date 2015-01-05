@@ -11,6 +11,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:drawableLeft="@drawable/drip"
+        android:drawablePadding="5dp"
         android:text="@string/app_name"
         android:textColor="@color/orange"
         android:textSize="40sp" />
