@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +35,12 @@ public class CoffeePostFragment extends BaseFragment {
     private static final String PARAM_COFFEE_ID = "PARAM_COFFEE_ID";
 
     private static final int MENU_EMAIL = 100;
+
+    @InjectView(R.id.entry)
+    protected LinearLayout mEntry;
+
+    @InjectView(R.id.progress_bar)
+    protected ProgressBar mProgressBar;
 
     @InjectView(R.id.entry_name)
     protected TextView mEntryName;
@@ -108,8 +116,19 @@ public class CoffeePostFragment extends BaseFragment {
     }
 
     private void fetchCoffeePost() {
+        showLoading(true);
         CoffeeExpandedPostRequest request = new CoffeeExpandedPostRequest(mCoffeeId);
         getSpiceManager().execute(request, request);
+    }
+
+    private void showLoading(boolean isLoading) {
+        if (isLoading) {
+            mProgressBar.setVisibility(View.VISIBLE);
+            mEntry.setVisibility(View.INVISIBLE);
+        } else {
+            mProgressBar.setVisibility(View.INVISIBLE);
+            mEntry.setVisibility(View.VISIBLE);
+        }
     }
 
     private void updateUI() throws ParseException {
@@ -138,7 +157,7 @@ public class CoffeePostFragment extends BaseFragment {
 
     @SuppressWarnings("UnusedDeclaration")
     public void onEventMainThread(CoffeeExpandedPostEvent event) throws ParseException {
-        Log.v(TAG, "Received event:" + event.getResult());
+        showLoading(false);
         if (event.isSuccess()) {
             mCoffeeData = new CoffeeExpandedPostData(event.getResult());
             updateUI();
